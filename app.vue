@@ -5,6 +5,7 @@
          <h1>Test</h1>
          <p>Test</p>
          <p>Test</p>
+         <p>Test</p>
       </NuxtLayout>
    </div>
 </template>
