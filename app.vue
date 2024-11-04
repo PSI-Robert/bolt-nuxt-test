@@ -3,6 +3,7 @@
       <NuxtLayout>
          <div class="hello" />
          <Button>Click Me</Button>
+         <Button>Click Me</Button>
       </NuxtLayout>
    </div>
 </template>
