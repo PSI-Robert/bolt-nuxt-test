@@ -1,0 +1,11 @@
+{
+   "root": true,
+   "extends": ["@nuxt", "plugin:prettier/recommended", "prettier"],
+   "env": {
+      "browser": true,
+      "node": true
+   },
+   "rules": {
+      "prettier/prettier": ["Warn"]
+   }
+}
