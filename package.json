@@ -11,8 +11,7 @@
       "lint": "eslint .",
       "lint:fix": "eslint . --fix",
       "format": "prettier --write \"{components,pages,plugins,middleware,layouts,composables,assets}/**/*.{js,jsx,ts,tsx,vue,html,css,scss,json,md}\"",
-      "prepare": "husky",
-      "precommit": "lint-staged && npm run analyze"
+      "prepare": "husky && husky install"
    },
    "dependencies": {
       "@nuxtjs/color-mode": "^3.5.2",
@@ -42,15 +41,11 @@
       "prettier-plugin-tailwindcss": "^0.6.8",
       "typescript": "^5.6.3"
    },
-   "husky": {
-      "hooks": {
-         "pre-commit": "lint-staged"
-      }
-   },
    "lint-staged": {
       "*.{js,ts,vue}": [
          "eslint --fix",
          "prettier --write --ignore-unknown"
-      ]
+      ],
+      "*.js": "eslint --cache --fix"
    }
 }
