@@ -6,3 +6,5 @@ if [ $? -ne 0 ]; then
   echo "❌ Code quality checks failed. Please fix the issues and try again."
   exit 1
 fi
+
+echo "✅ All quality checks passed!"
