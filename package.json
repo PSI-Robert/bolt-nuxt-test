@@ -9,6 +9,7 @@
       "preview": "nuxt preview",
       "postinstall": "nuxt prepare",
       "test": "vitest",
+      "test:ci": "vitest run",
       "lint": "eslint .",
       "lint:fix": "eslint . --fix",
       "format": "prettier --write \"{components,pages,plugins,middleware,layouts,composables,assets}/**/*.{js,jsx,ts,tsx,vue,html,css,scss,json,md}\"",
@@ -56,6 +57,7 @@
    },
    "lint-staged": {
       "*.{js,ts,vue}": [
+         "npm run test:ci",
          "eslint --fix",
          "prettier --write --ignore-unknown"
       ],

@@ -5,7 +5,7 @@ import HeroCarousel from '~/components/features/home/HeroCarousel.vue';
 describe('HeroCarousel', () => {
    it('initializes with the first slide', () => {
       const wrapper = mount(HeroCarousel);
-      expect(wrapper.vm.currentSlide).toBe(3);
+      expect(wrapper.vm.currentSlide).toBe(0);
    });
 
    it('moves to the next slide correctly', async () => {
