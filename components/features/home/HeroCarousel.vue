@@ -25,6 +25,12 @@
          subtitle: 'Limited Time Collection',
          buttonText: 'View Collections →',
       },
+      {
+         image: 'https://picsum.photos/seed/picsum/1600/900',
+         title: 'Special Offer',
+         subtitle: 'Limited Time Collection',
+         buttonText: 'View Collections →',
+      },
    ];
 
    const currentSlide = ref<number>(0);
