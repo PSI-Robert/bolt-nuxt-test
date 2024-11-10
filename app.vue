@@ -1,10 +1,13 @@
 <template>
-   <div class="flex min-h-screen bg-slate-50 dark:bg-black dark:text-white">
-      <NuxtLayout>
-         <Button>Click Me</Button>
-         <h1>Test</h1>
-      </NuxtLayout>
-   </div>
+   <NuxtLayout>
+      <NuxtPage />
+   </NuxtLayout>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+   // Any app-wide setup can go here
+</script>
+
+<style>
+   /* Any global styles can go here */
+</style>
