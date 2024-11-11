@@ -1,4 +1,5 @@
 <script setup lang="ts">
+   // Product structure
    interface Product {
       id: number;
       title: string;
@@ -11,6 +12,7 @@
       category: string;
    }
 
+   // Product data
    const products = ref<Product[]>([
       {
          id: 1,
@@ -63,20 +65,32 @@
       },
    ]);
 
-   const slidePosition = ref(0);
-   const itemsPerPage = 4;
+   // inline composable for slide functionality
+   function useSlide() {
+      const slidePosition = ref<number>(0);
+      const itemsPerPage = 4;
 
-   const nextSlide = () => {
-      if (slidePosition.value < products.value.length - itemsPerPage) {
-         slidePosition.value++;
-      }
-   };
+      const nextSlide = () => {
+         if (slidePosition.value < products.value.length - itemsPerPage) {
+            slidePosition.value++;
+         }
+      };
 
-   const prevSlide = () => {
-      if (slidePosition.value > 0) {
-         slidePosition.value--;
-      }
-   };
+      const prevSlide = () => {
+         if (slidePosition.value > 0) {
+            slidePosition.value--;
+         }
+      };
+
+      return {
+         slidePosition,
+         itemsPerPage,
+         nextSlide,
+         prevSlide,
+      };
+   }
+
+   const { slidePosition, itemsPerPage, nextSlide, prevSlide } = useSlide();
 </script>
 
 <template>

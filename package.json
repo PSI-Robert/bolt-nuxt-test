@@ -58,8 +58,9 @@
    "lint-staged": {
       "*.{js,ts,vue}": [
          "eslint --fix",
-         "prettier --write --ignore-unknown"
+         "prettier --write",
+         "vitest related --run"
       ],
-      "*.js": "eslint --cache --fix"
+      "*.{css,scss}": "prettier --write"
    }
 }

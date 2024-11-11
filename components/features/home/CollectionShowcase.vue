@@ -1,4 +1,5 @@
 <script setup lang="ts">
+   // Collection structure
    interface Collection {
       id: number;
       title: string;
@@ -7,6 +8,7 @@
       backgroundColor?: string;
    }
 
+   // Collection data
    const collections = ref<Collection[]>([
       {
          id: 1,

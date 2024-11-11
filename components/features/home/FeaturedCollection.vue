@@ -1,4 +1,5 @@
 <script setup lang="ts">
+   // FeaturedCollection structure
    interface FeaturedCollection {
       title: string;
       description: string;
@@ -7,6 +8,7 @@
       link: string;
    }
 
+   // FeaturedCollection data
    const collection: FeaturedCollection = {
       title: 'Get Ready for our new Bold Collections!',
       description:

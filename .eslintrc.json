@@ -6,6 +6,10 @@
       "node": true
    },
    "rules": {
-      "prettier/prettier": ["Warn"]
+      "prettier/prettier": ["Warn"],
+      "vue/component-name-in-template-casing": ["error", "PascalCase"],
+      "vue/multi-word-component-names": "error",
+      "vue/no-unused-components": "error",
+      "vue/no-unused-vars": "error"
    }
 }

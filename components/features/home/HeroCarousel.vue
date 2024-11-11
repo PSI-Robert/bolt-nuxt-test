@@ -1,4 +1,5 @@
 <script setup lang="ts">
+   // Slide structure
    interface Slide {
       image: string;
       title: string;
@@ -6,6 +7,7 @@
       buttonText: string;
    }
 
+   // Slide data
    const slides: Slide[] = [
       {
          image: 'https://picsum.photos/seed/picsum/1600/900',
@@ -33,20 +35,33 @@
       },
    ];
 
-   const currentSlide = ref<number>(0);
+   // inline composable for carousel functionality
+   function useCarousel(slides: Slide[]) {
+      const currentSlide = ref<number>(0);
 
-   const nextSlide = () => {
-      currentSlide.value = (currentSlide.value + 1) % slides.length;
-   };
+      const nextSlide = () => {
+         currentSlide.value = (currentSlide.value + 1) % slides.length;
+      };
 
-   const prevSlide = () => {
-      currentSlide.value = (currentSlide.value - 1 + slides.length) % slides.length;
-   };
+      const prevSlide = () => {
+         currentSlide.value = (currentSlide.value - 1 + slides.length) % slides.length;
+      };
 
-   const goToSlide = (index: number) => {
-      currentSlide.value = index;
-   };
+      const goToSlide = (index: number) => {
+         currentSlide.value = index;
+      };
 
+      return {
+         currentSlide,
+         nextSlide,
+         prevSlide,
+         goToSlide,
+      };
+   }
+
+   const { currentSlide, nextSlide, prevSlide, goToSlide } = useCarousel(slides);
+
+   // Expose methods for potential parent component use
    defineExpose({ currentSlide, nextSlide, prevSlide, goToSlide });
 </script>
 

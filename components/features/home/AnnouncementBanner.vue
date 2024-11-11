@@ -4,10 +4,19 @@
       link: string;
    }
 
-   const banner: Banner = {
+   // Props for reusability
+   const props = defineProps<{
+      banner?: Banner;
+   }>();
+
+   // Default banner if not provided through props
+   const defaultBanner: Banner = {
       text: 'Get UPTO 40% OFF on your 1st order',
       link: '/shop',
    };
+
+   // Use provided banner or default
+   const banner = computed(() => props.banner || defaultBanner);
 </script>
 
 <template>
