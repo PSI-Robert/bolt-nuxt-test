@@ -1,89 +1,226 @@
-# Contributing to [Your Project Name]
+# Contributing to Praxxys Nuxt Boilerplate
 
-Thank you for your interest in contributing to our project! We welcome contributions from everyone. This document will guide you through our development process and project structure.
+<div align="center">
 
-## Table of Contents
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=for-the-badge)](https://conventionalcommits.org)
+[![Code Style](https://img.shields.io/badge/code%20style-prettier-ff69b4.svg?style=for-the-badge)](https://prettier.io/)
+[![Maintainability](https://img.shields.io/badge/Maintainability-A+-success.svg?style=for-the-badge)](/)
 
-1. [Code of Conduct](#code-of-conduct)
-2. [Getting Started](#getting-started)
-3. [Project Structure](#project-structure)
-4. [Development Workflow](#development-workflow)
-5. [Coding Standards](#coding-standards)
-6. [Commit Guidelines](#commit-guidelines)
-7. [Pull Request Process](#pull-request-process)
-8. [Testing](#testing)
+A guide to contributing to the Praxxys Nuxt 3 Boilerplate project
 
-## Code of Conduct
+</div>
 
-By participating in this project, you agree to abide by our [Code of Conduct](CODE_OF_CONDUCT.md).
+## 📑 Table of Contents
 
-## Getting Started
+-  [Code of Conduct](#-code-of-conduct)
+-  [Getting Started](#-getting-started)
+-  [Development Workflow](#-development-workflow)
+-  [Project Structure](#-project-structure)
+-  [Coding Standards](#-coding-standards)
+-  [Commit Guidelines](#-commit-guidelines)
+-  [Pull Request Process](#-pull-request-process)
+-  [Testing Guidelines](#-testing-guidelines)
 
-1. Fork the repository
-2. Clone your fork: `git clone https://github.com/your-username/project-name.git`
-3. Install dependencies: `npm install`
-4. Run the development server: `npm run dev`
+## 📜 Code of Conduct
 
-## Project Structure
+Our team is dedicated to providing a welcoming and inclusive environment. We expect all contributors to:
 
-Our project follows a standardized structure designed for large-scale applications and team collaboration:
-📁 project-root/ ├── 📁 assets/ ├── 📁 components/ │ ├── 📁 common/ │ ├── 📁 layout/ │ └── 📁 features/ ├── 📁 composables/ ├── 📁 layouts/ ├── 📁 middleware/ ├── 📁 pages/ ├── 📁 plugins/ ├── 📁 stores/ ├── 📁 types/ ├── 📁 utils/ ├── 📁 server/ └── 📁 test/
+-  Be respectful and inclusive of differing viewpoints
+-  Accept constructive criticism gracefully
+-  Focus on what's best for the team and project
+-  Show empathy towards others
 
-For detailed information about each directory's purpose, please refer to our [Project Structure Guide](content/project-structure.md).
+## 🚀 Getting Started
 
-## Development Workflow
+1. Clone the repository:
 
-1. Create a new branch for your feature or bugfix: `git checkout -b feature/your-feature-name`
-2. Make your changes, following our coding standards
-3. Write or update tests as necessary
-4. Run tests and ensure they pass: `npm run test`
-5. Commit your changes following our commit guidelines
-6. Push your branch and create a pull request
+```bash
+git clone ssh://git@gitlab.praxxys.ph:52222/praxxys-labs-2025/frameworks/nuxt/praxxys-frontend.git
+cd praxxys-frontend
+```
 
-## Coding Standards
+2. Install dependencies:
 
--  Use TypeScript for all new code
--  Follow the [Vue.js Style Guide](https://vuejs.org/style-guide/)
--  Use Composition API for new components
--  Use Pinia for state management
--  Follow naming conventions:
-   -  PascalCase for component names
-   -  camelCase for method and property names
-   -  kebab-case for custom events
+```bash
+npm install
+```
 
-## Commit Guidelines
+3. Set up your development environment:
 
-We follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
+   -  Install required VS Code extensions
+   -  Copy `.env.example` to `.env`
+   -  Configure your editor settings
 
--  `feat:` for new features
--  `fix:` for bug fixes
--  `docs:` for documentation changes
--  `style:` for changes that do not affect the meaning of the code
--  `refactor:` for code changes that neither fix a bug nor add a feature
--  `perf:` for performance improvements
--  `test:` for adding or modifying tests
--  `chore:` for changes to the build process or auxiliary tools
+4. Start the development server:
 
-Example: `feat: add user authentication feature`
+```bash
+npm run dev
+```
 
-## Pull Request Process
+## 💻 Development Workflow
 
-1. Ensure your code follows our coding standards and project structure
-2. Update the README.md with details of significant changes if applicable
-3. Add any necessary documentation to the `content/` directory
-4. Ensure all tests pass and add new tests for new functionality
-5. Your pull request will be reviewed by at least one maintainer
-6. Address any comments or requested changes
-7. Once approved, your pull request will be merged
+1. **Branch Creation**
 
-## Testing
+   ```bash
+   git checkout -b feature/your-feature-name
+   # or
+   git checkout -b fix/issue-description
+   ```
 
--  Write unit tests for all new functionality
--  Update existing tests when modifying code
--  Ensure all tests pass before submitting a pull request
--  Aim for high test coverage, especially for critical paths
+2. **Development**
 
-We use Vitest for unit testing. Run tests with:
-npm run test
+   -  Write code following our [Coding Standards](#-coding-standards)
+   -  Keep changes focused and atomic
+   -  Update tests as needed
 
-Thank you for contributing to Boilerplate!
+3. **Testing**
+
+   ```bash
+   npm run test        # Run all tests
+   npm run lint        # Check code style
+   npm run type-check  # Verify TypeScript
+   ```
+
+4. **Committing Changes**
+   ```bash
+   git add .
+   git commit -m "feat: add user authentication feature"
+   ```
+
+## 📁 Project Structure
+
+```
+praxxys-frontend/
+├── assets/          # Static assets
+│   ├── images/     # Image files
+│   └── styles/     # Global styles
+├── components/     # Vue components
+│   ├── common/     # Reusable UI components
+│   ├── layout/     # Layout components
+│   └── features/   # Feature-specific components
+├── composables/    # Composition functions
+├── layouts/        # Page layouts
+├── pages/         # Application routes
+├── stores/        # Pinia stores
+├── types/         # TypeScript types
+└── utils/         # Utility functions
+```
+
+## 📝 Coding Standards
+
+### Component Structure
+
+```vue
+<script setup lang="ts">
+   // 1. Type imports
+   import type { User } from '~/types';
+
+   // 2. Props/Emits
+   const props = defineProps<{
+      user: User;
+   }>();
+
+   // 3. Composables
+   const { userData } = useUser();
+
+   // 4. Additional logic
+</script>
+
+<template>
+   <div>
+      <!-- Template content -->
+   </div>
+</template>
+```
+
+### Naming Conventions
+
+-  **Components:** PascalCase (`UserProfile.vue`)
+-  **Files:** kebab-case (`user-profile.vue`)
+-  **Functions:** camelCase (`getUserData()`)
+-  **Constants:** UPPERCASE (`MAX_ITEMS`)
+-  **Types/Interfaces:** PascalCase (`UserInterface`)
+
+## 📋 Commit Guidelines
+
+We follow [Conventional Commits](https://www.conventionalcommits.org/):
+
+```bash
+type(scope): description
+
+# Examples
+feat(auth): add user login functionality
+fix(api): resolve data fetching issue
+docs(readme): update installation steps
+style(lint): format code according to standards
+refactor(store): improve state management logic
+test(auth): add unit tests for login
+chore(deps): update dependencies
+```
+
+### Types
+
+-  `feat`: New feature
+-  `fix`: Bug fix
+-  `docs`: Documentation
+-  `style`: Formatting
+-  `refactor`: Code restructuring
+-  `test`: Tests
+-  `chore`: Maintenance
+
+## 🔄 Pull Request Process
+
+1. **Create Pull Request**
+
+   -  Use our PR template
+   -  Link related issues
+   -  Include clear description
+
+2. **Review Process**
+
+   -  Address reviewer feedback
+   -  Keep discussions focused
+   -  Update PR as needed
+
+3. **Checklist**
+   -  [ ] Tests passing
+   -  [ ] Code meets standards
+   -  [ ] Documentation updated
+   -  [ ] No conflicts with main branch
+
+## 🧪 Testing Guidelines
+
+### Writing Tests
+
+```typescript
+import { describe, it, expect } from 'vitest';
+import { mountSuspended } from '@nuxt/test-utils/runtime';
+import MyComponent from './MyComponent.vue';
+
+describe('MyComponent', () => {
+   it('renders correctly', async () => {
+      const wrapper = await mountSuspended(MyComponent);
+      expect(wrapper.exists()).toBe(true);
+   });
+});
+```
+
+### Testing Commands
+
+```bash
+npm run test          # Run all tests
+npm run test:watch    # Run tests in watch mode
+npm run test:coverage # Generate coverage report
+```
+
+## 🤝 Need Help?
+
+-  Check our [GitLab Wiki](/-/wikis/home)
+-  Contact the team lead
+-  Open an issue for discussion
+
+---
+
+<div align="center">
+  <sub>Thank you for contributing to the Praxxys Nuxt Boilerplate! 🙏</sub>
+</div>
