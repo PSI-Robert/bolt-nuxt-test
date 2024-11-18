@@ -24,4 +24,5 @@ logs
 !.env.example
 
 .prompts
-content
+content/*
+.vscode

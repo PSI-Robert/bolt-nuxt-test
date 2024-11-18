@@ -33,7 +33,6 @@
             :data="pageData.banner"
             :loading="status == 'pending'"
          />
-
          <DelayHydration>
             <LazyFeaturesSection
                :data="pageData?.featureSection"

@@ -1,3 +1,5 @@
+<script setup lang="ts"></script>
+
 <template>
    <NuxtLayout>
       <NuxtLoadingIndicator />
@@ -6,8 +8,6 @@
       </main>
    </NuxtLayout>
 </template>
-
-<script setup lang="ts"></script>
 
 <style>
    .page-enter-active,
