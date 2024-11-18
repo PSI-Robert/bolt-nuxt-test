@@ -29,7 +29,7 @@ This standardized boilerplate solves common development challenges and improves 
 -  **Team Alignment**: Single source of truth for coding standards
 -  **Maintainability**: Consistent patterns make maintenance more predictable
 
-For detailed standards and patterns, see our [Project Standards Guide](/-/wikis/Project-Standards).
+For detailed standards and patterns, see our [Project Standards Guide](Project-Standards).
 
 ## ✨ Features
 
