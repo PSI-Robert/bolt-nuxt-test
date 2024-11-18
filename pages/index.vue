@@ -1,19 +1,21 @@
 <script setup lang="ts">
-   // Import lazy-loaded components
-   import LazyHeroCarousel from '@/components/features/home/HeroCarousel.vue';
-   import LazyAnnouncementBanner from '@/components/features/home/AnnouncementBanner.vue';
-   import LazyProductSlider from '@/components/features/home/ProductSlider.vue';
-   import LazyCollectionShowcase from '@/components/features/home/CollectionShowcase.vue';
-   import LazyFeaturedCollection from '@/components/features/home/FeaturedCollection.vue';
-   import LazyServiceFeatures from '@/components/features/home/ServiceFeatures.vue';
+   import HomeBanner from '@/components/features/home/HomeBanner.vue';
+   import LazyFeaturesSection from '@/components/features/home/section/FeaturesSection.vue';
+   import LazyEarlyAccessSignup from '@/components/features/home/section/EarlyAccessSignup.vue';
+   import LazyErrorDisplay from '@/components/shared/BaseErrorDisplay.vue';
+
+   import type { HomePageData } from '@/types/home';
+
+   // Fetch all data for homepage
+   const { data: pageData, status, error } = await useFetch<HomePageData>('/api/home');
 
    // SEO metadata
    useHead({
-      title: 'Home Page',
+      title: computed(() => pageData.value?.seo.title || 'Nuxt Boilerplate'),
       meta: [
          {
-            name: 'description',
-            content: 'Welcome to our online store. Discover our latest collections and offers.',
+            name: computed(() => pageData.value?.seo.meta.name || 'description'),
+            content: computed(() => pageData.value?.seo.meta.content || 'content'),
          },
       ],
    });
@@ -21,16 +23,27 @@
 
 <template>
    <div>
-      <ClientOnly>
-         <lazy-hero-carousel />
-         <lazy-announcement-banner />
+      <LazyErrorDisplay
+         v-if="error"
+         :error="error"
+      />
+      <template v-else>
+         <HomeBanner
+            v-if="pageData"
+            :data="pageData.banner"
+            :loading="status == 'pending'"
+         />
 
-         <div class="px-24">
-            <lazy-product-slider />
-            <lazy-collection-showcase />
-            <lazy-featured-collection />
-            <lazy-service-features />
-         </div>
-      </ClientOnly>
+         <DelayHydration>
+            <LazyFeaturesSection
+               :data="pageData?.featureSection"
+               :loading="status == 'pending'"
+            />
+            <LazyEarlyAccessSignup
+               :data="pageData?.earlyAccessSection"
+               :loading="status == 'pending'"
+            />
+         </DelayHydration>
+      </template>
    </div>
 </template>

@@ -1,22 +1,29 @@
+<script setup lang="ts">
+   import TheStickyNavbar from '@/components/layout/TheStickyNavbar.vue';
+   import LazyTheFooter from '@/components/layout/TheFooter.vue';
+
+   const isScrolled = ref(false);
+
+   if (import.meta.client) {
+      onMounted(() => {
+         const updateScroll = () => {
+            isScrolled.value = window.scrollY > 0;
+         };
+         window.addEventListener('scroll', updateScroll, { passive: true });
+         updateScroll();
+
+         onUnmounted(() => {
+            window.removeEventListener('scroll', updateScroll);
+         });
+      });
+   }
+</script>
+
 <template>
-   <!-- bg-slate-950 dark:bg-black dark:text-white -->
-   <div class="flex min-h-screen flex-col bg-white">
-      <!-- Header goes here -->
-      <TheHeader />
-      <TheNavbar />
+   <div class="min-h-screen bg-brand-dark1">
+      <TheStickyNavbar :is-scrolled="isScrolled" />
+      <slot />
 
-      <!-- Main content -->
-      <main class="flex-grow">
-         <slot />
-      </main>
-
-      <!-- Footer goes here -->
-      <TheFooter />
+      <LazyTheFooter />
    </div>
 </template>
-
-<script setup lang="ts">
-   import TheHeader from '~/components/layout/TheHeader.vue';
-   import TheNavbar from '~/components/layout/TheNavbar.vue';
-   import TheFooter from '~/components/layout/TheFooter.vue';
-</script>

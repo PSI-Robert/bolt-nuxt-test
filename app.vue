@@ -1,13 +1,21 @@
 <template>
    <NuxtLayout>
-      <NuxtPage />
+      <NuxtLoadingIndicator />
+      <main>
+         <NuxtPage />
+      </main>
    </NuxtLayout>
 </template>
 
-<script setup lang="ts">
-   // Any app-wide setup can go here
-</script>
+<script setup lang="ts"></script>
 
 <style>
-   /* Any global styles can go here */
+   .page-enter-active,
+   .page-leave-active {
+      transition: all 0.2s;
+   }
+   .page-enter-from,
+   .page-leave-to {
+      opacity: 0;
+   }
 </style>
